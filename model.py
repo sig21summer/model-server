@@ -1,16 +1,5 @@
-import pandas as pd
-from transformers import GPT2LMHeadModel, GPT2Tokenizer
-import numpy as np
-import random
+from transformers import GPT2LMHeadModel, GPT2Tokenizer, PreTrainedTokenizerFast
 import torch
-from torch.utils.data import Dataset, DataLoader
-from transformers import GPT2Tokenizer, GPT2LMHeadModel, AdamW, get_linear_schedule_with_warmup
-from tqdm import tqdm, trange
-import torch.nn.functional as F
-import csv
-from transformers import PreTrainedTokenizerFast
-import os
-from sklearn.model_selection import train_test_split
 
 # model init
 tokenizer = PreTrainedTokenizerFast.from_pretrained(
