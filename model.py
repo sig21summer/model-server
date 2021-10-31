@@ -31,3 +31,4 @@ loaded_model = FastText.load("../codes/fastText")
 def getSimilar(text):
     return loaded_model.wv.most_similar(text)
 print("similar model loaded")
+
