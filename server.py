@@ -24,6 +24,16 @@ def root2():
     res_json["data"] = res
     return res_json
 
+@app.route("/similar")
+def root3():
+    json = request.get_json()
+    text = json['text']
+
+    res = model.getSimilar(text)
+    res_json = {}
+    res_json["data"] = res
+    return res_json
+
 
 if __name__ == "__main__":
     app.run()

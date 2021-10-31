@@ -2,6 +2,7 @@ from transformers import GPT2LMHeadModel, GPT2Tokenizer, PreTrainedTokenizerFast
 import torch
 
 # model init
+print("model loading")
 tokenizer = PreTrainedTokenizerFast.from_pretrained(
     "skt/kogpt2-base-v2", bos_token='</s>', eos_token='</s>', unk_token='<unk>', pad_token='<pad>', mask_token='<mask>')
 model = GPT2LMHeadModel.from_pretrained('skt/kogpt2-base-v2')
@@ -21,3 +22,12 @@ def predictNext(text, k=20):
     probs = predictions[0, -1, :]
     top_next = [tokenizer.decode(i.item()).strip() for i in probs.topk(k)[1]]
     return top_next
+print("word prediction model loaded")
+
+from gensim.models import FastText
+
+loaded_model = FastText.load("../codes/fastText")
+
+def getSimilar(text):
+    return loaded_model.wv.most_similar(text)
+print("similar model loaded")
